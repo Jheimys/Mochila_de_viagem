@@ -23,14 +23,44 @@
 
         criaLi.appendChild(criaStrong) 
         criaLi.innerHTML += item.nome
+        criaLi.appendChild(botaoDeleta(item.id))
 
         lista.appendChild(criaLi)
-        console.log(lista)
+       
     }
 
     function atualizaElemento(item) {
         const strongId = document.querySelector("[data-id = '"+item.id+"']")
         strongId.innerHTML = item.quantidade
+    }
+
+    function botaoDeleta(id) {
+
+        const btnDeleta = document.createElement('button')
+        btnDeleta.innerText = 'X'
+
+        btnDeleta.addEventListener('click', (e) => {
+            //console.log(e.target.parentNode)
+            deletaElemento(e, id)
+            
+        })
+
+        return btnDeleta
+    }
+
+    function deletaElemento(elemento, id) {
+        //remove na tela
+        const deletaLi = elemento.target.parentNode
+
+        deletaLi.remove()
+
+        const indice = itens.findIndex(item => item.id === id)
+
+        // Para remover no local storage tenho que remover no array
+        //itens.splice(indice, 1),  o indice posso conseguir pelo id.
+        itens.splice(indice, 1)
+        localStorage.setItem('storageItens', JSON.stringify(itens))
+        
     }
 
     //Eventos
@@ -54,11 +84,13 @@
 
             atualizaElemento(novoItem)
 
-            itens[existe.id] = novoItem
+            const indice = itens.findIndex(item => item.id === existe.id)
+
+            itens[indice] = novoItem
 
         } else {
 
-            novoItem.id = itens.length
+            novoItem.id = itens[itens.length - 1] ? (itens[itens.length - 1]).id + 1 : 0
 
             criaElementos(novoItem)
 
