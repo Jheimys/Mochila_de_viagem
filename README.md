@@ -22,7 +22,7 @@ O projeto mochila de viagem é uma uma página web últil é bem simples de ser 
 pronto não esquça mais nada. Na mochila de vigem podemos adicionar, atualizar e deletar um item e ainda possui um design responsivo para usar como preferir no
 tablet, nootebok ou celular.
 
-No desenvolvimento do projeto o foco principal foi a percistência dos dados na web, o usuário pode fechar e abrir a página ou até mesmo reiniciar o computador e não
+No desenvolvimento do projeto o foco principal foi a persistência dos dados na web, o usuário pode fechar e abrir a página ou até mesmo reiniciar o computador e não
 perder as informações que foram digitadas, uma das formas de fazer isso é usando o localStorage.
 
 O localStorage é um objeto JavaScript que usamos para armazenar dados no navegador. Ele fornece métodos para armazenar e recuperar a informação. O uso da API é bem
